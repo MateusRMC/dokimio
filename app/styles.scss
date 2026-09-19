@@ -35,7 +35,7 @@ html[data-theme="dark"] {
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* WHOLE APP FONT HERE */
 }
 
 button,
@@ -294,25 +294,37 @@ textarea {
 }
 
 .newContent {
-  font-family: Helvetica, sans-serif;
-  line-height: 2;
-  letter-spacing: 0.4;
   flex: 1;
   min-height: 0;
-  margin: 4px 0px;
-  padding: 20px;
-  border-radius: 5px;
+
+  width: 100%;
+  max-width: 720px;
+
+  margin: 0 auto;
+  padding: 32px 24px 80px;
+
   border: none;
   outline: none;
-  font-size: 16px;
-
   resize: none;
+
   overflow-y: auto;
+  scrollbar-width: none;
 
   background-color: var(--input);
   color: var(--foreground);
 
   box-sizing: border-box;
+
+  /* Typography */
+  font-family: "Charter", "Bitstream Charter", "Sitka Text", Georgia, serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+
+  /* Reading quality */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 .newContent::placeholder {
