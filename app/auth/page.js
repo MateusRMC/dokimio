@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import "./auth.scss";
 
 export default function Home() {
   const [emailReg, setEmailReg] = useState("");
@@ -8,6 +9,8 @@ export default function Home() {
 
   const [emailLog, setEmailLog] = useState("");
   const [passLog, setPassLog] = useState("");
+
+  const [toggleForm, setToggleForm] = useState(false);
 
   async function register(e) {
     e.preventDefault();
@@ -62,50 +65,65 @@ export default function Home() {
     }
 
     console.log("Login:", json);
+
     window.location.href = "/notes";
   }
 
   return (
     <div className="auth">
-      <form className="register" onSubmit={register}>
-        <input
-          type="email"
-          placeholder="Your best email"
-          onChange={(e) => setEmailReg(e.target.value)}
-          value={emailReg}
-          required
-        />
+      <h1 className="authGreeting">Let's get started</h1>
+      {toggleForm ? (
+        <form className="login" onSubmit={login}>
+          <input
+            className="inputAuth"
+            type="email"
+            placeholder="Your best email"
+            onChange={(e) => setEmailLog(e.target.value)}
+            value={emailLog}
+            required
+          />
 
-        <input
-          type="password"
-          placeholder="Type your password"
-          onChange={(e) => setPassReg(e.target.value)}
-          value={passReg}
-          required
-        />
+          <input
+            type="password"
+            className="inputAuth"
+            placeholder="Type your password"
+            onChange={(e) => setPassLog(e.target.value)}
+            value={passLog}
+            required
+          />
 
-        <input type="submit" value="REGISTER" />
-      </form>
+          <input className="submitAuth" type="submit" value="LOGIN" />
+        </form>
+      ) : (
+        <form className="register" onSubmit={register}>
+          <input
+            type="email"
+            className="inputAuth"
+            placeholder="Your best email"
+            onChange={(e) => setEmailReg(e.target.value)}
+            value={emailReg}
+            required
+          />
 
-      <form className="login" onSubmit={login}>
-        <input
-          type="email"
-          placeholder="Your best email"
-          onChange={(e) => setEmailLog(e.target.value)}
-          value={emailLog}
-          required
-        />
+          <input
+            type="password"
+            className="inputAuth"
+            placeholder="Type your password"
+            onChange={(e) => setPassReg(e.target.value)}
+            value={passReg}
+            required
+          />
 
-        <input
-          type="password"
-          placeholder="Type your password"
-          onChange={(e) => setPassLog(e.target.value)}
-          value={passLog}
-          required
-        />
-
-        <input type="submit" value="LOGIN" />
-      </form>
+          <input className="submitAuth" type="submit" value="REGISTER" />
+        </form>
+      )}
+      <button
+        className="toggle"
+        type="button"
+        onClick={() => (toggleForm ? setToggleForm(false) : setToggleForm(true))}
+      >
+        {toggleForm ? "Create an Account" : "I have an account already"}
+      </button>
     </div>
   );
 }

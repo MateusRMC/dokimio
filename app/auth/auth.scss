@@ -1,0 +1,52 @@
+.auth {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 60%;
+  max-width: 500px;
+  margin: auto;
+  overflow: hidden;
+  text-align: center;
+}
+
+.authGreeting {
+  font-family: Georgia;
+}
+
+.inputAuth {
+  display: flex;
+  flex-direction: column;
+  margin: 15px auto;
+  height: 50px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #303030;
+  color: white;
+  width: 100%;
+  outline: none;
+  background-color: transparent;
+}
+
+.submitAuth {
+  background-color: white;
+  margin: 15px auto;
+  height: 50px;
+  padding: 10px;
+  border-radius: 8px;
+  width: 100%;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.toggle {
+  background-color: transparent;
+  border: none;
+  color: #505050;
+}
+
+.toggle:hover {
+  color: orange;
+  cursor: pointer;
+}
