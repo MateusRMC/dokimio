@@ -1,9 +1,6 @@
-import "server-only";
-
 // app/lib/serverCrypto.js  (só roda no servidor, nunca importe em componente "use client")
+// import "server-only"; // descomente depois de: npm install server-only
 import crypto from "node:crypto";
-
-const PREFIX = "enc:v1:";
 
 function getKey() {
   const hex = process.env.NOTES_ENC_KEY;
@@ -15,7 +12,7 @@ function getKey() {
   return Buffer.from(hex, "hex");
 }
 
-// Guarda: prefixo + base64( IV(12) + tag(16) + texto cifrado )
+// Guarda: base64( IV(12) + tag(16) + texto cifrado ), sem prefixo.
 // O userId entra como AAD: uma nota copiada pra outro usuário deixa de abrir.
 export function encryptText(text, userId) {
   const iv = crypto.randomBytes(12);
@@ -25,16 +22,16 @@ export function encryptText(text, userId) {
   const enc = Buffer.concat([cipher.update(text ?? "", "utf8"), cipher.final()]);
   const tag = cipher.getAuthTag();
 
-  return PREFIX + Buffer.concat([iv, tag, enc]).toString("base64");
+  return Buffer.concat([iv, tag, enc]).toString("base64");
 }
 
+// Lança erro se o valor não for uma nota encriptada com esta chave e este usuário.
 export function decryptText(value, userId) {
-  // Notas antigas (texto puro) passam direto, então dá pra ligar isso sem migrar nada
-  if (typeof value !== "string" || !value.startsWith(PREFIX)) {
-    return value ?? "";
+  if (value == null) {
+    return "";
   }
 
-  const buf = Buffer.from(value.slice(PREFIX.length), "base64");
+  const buf = Buffer.from(value, "base64");
 
   const decipher = crypto.createDecipheriv("aes-256-gcm", getKey(), buf.subarray(0, 12));
   decipher.setAAD(Buffer.from(userId));
