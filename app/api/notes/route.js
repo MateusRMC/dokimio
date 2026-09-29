@@ -1,4 +1,5 @@
 import { supabaseServer } from "@/app/lib/supabaseServer";
+import { encryptText, decryptNote } from "@/app/lib/serverCrypto";
 import { NextResponse } from "next/server";
 
 async function getUser() {
@@ -33,7 +34,12 @@ export async function GET() {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
-  return NextResponse.json(data);
+  try {
+    return NextResponse.json(data.map((note) => decryptNote(note, user.id)));
+  } catch (e) {
+    console.error("Erro ao desencriptar notas:", e.message);
+    return NextResponse.json({ error: "Could not decrypt notes" }, { status: 500 });
+  }
 }
 
 export async function POST(req) {
@@ -48,8 +54,8 @@ export async function POST(req) {
   const { data, error } = await supabase
     .from("notes")
     .insert({
-      title: body.title,
-      content: body.content,
+      title: encryptText(body.title, user.id),
+      content: encryptText(body.content, user.id),
       user_id: user.id,
     })
     .select()
@@ -59,7 +65,7 @@ export async function POST(req) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
-  return NextResponse.json(data);
+  return NextResponse.json(decryptNote(data, user.id));
 }
 
 export async function PATCH(req) {
@@ -78,11 +84,11 @@ export async function PATCH(req) {
   const updates = {};
 
   if (body.title !== undefined) {
-    updates.title = body.title;
+    updates.title = encryptText(body.title, user.id);
   }
 
   if (body.content !== undefined) {
-    updates.content = body.content;
+    updates.content = encryptText(body.content, user.id);
   }
 
   if (Object.keys(updates).length === 0) {
@@ -105,7 +111,7 @@ export async function PATCH(req) {
     return NextResponse.json({ error: "Note not found" }, { status: 404 });
   }
 
-  return NextResponse.json(data);
+  return NextResponse.json(decryptNote(data, user.id));
 }
 
 export async function DELETE(req) {
@@ -126,7 +132,7 @@ export async function DELETE(req) {
     .delete()
     .eq("id", body.id)
     .eq("user_id", user.id)
-    .select()
+    .select("id")
     .maybeSingle();
 
   if (error) {
