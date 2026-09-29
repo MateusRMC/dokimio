@@ -10,7 +10,7 @@ export default function Home() {
   const [emailLog, setEmailLog] = useState("");
   const [passLog, setPassLog] = useState("");
 
-  const [toggleForm, setToggleForm] = useState(false);
+  const [toggleForm, setToggleForm] = useState(true);
 
   async function register(e) {
     e.preventDefault();
