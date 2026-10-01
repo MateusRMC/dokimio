@@ -11,16 +11,10 @@ export default function manifest() {
     theme_color: "#fcfcfb",
     icons: [
       {
-        src: "/icons/d-logo.png",
-        sizes: "192x192",
-        type: "image/png",
-        purpose: "any maskable",
-      },
-      {
-        src: "/icons/d-logo.png",
+        src: "/icons/d-logo-whitebg.png",
         sizes: "512x512",
         type: "image/png",
-        purpose: "any maskable",
+        purpose: "any",
       },
     ],
   };

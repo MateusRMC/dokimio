@@ -9,8 +9,17 @@ export const metadata = {
   applicationName: "Dokimio",
 
   icons: {
-    icon: "/icons/d-logo.png",
-    apple: "/icons/d-logo.png",
+    icon: [
+      {
+        url: "/icons/d-logo.png",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: "/icons/d-white-logo.png",
+        media: "(prefers-color-scheme: dark)",
+      },
+    ],
+    apple: "/icons/d-logo-whitebg.png",
   },
 
   appleWebApp: {
