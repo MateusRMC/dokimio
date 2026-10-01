@@ -1,5 +1,6 @@
 import "./styles.scss";
 import "./home.scss";
+import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "./lib/themeProvider";
 
 export const metadata = {
