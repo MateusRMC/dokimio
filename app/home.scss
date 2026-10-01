@@ -1,0 +1,62 @@
+.homeWrapper {
+  display: flex;
+  flex-direction: column;
+
+  width: 95%;
+  height: 100%;
+
+  margin: 10px auto;
+
+  color: var(--foreground);
+}
+
+.homeHero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  flex: 8;
+  width: 100%;
+
+  text-align: center;
+}
+
+.homeLogo {
+  width: 80%;
+  max-width: 500px;
+
+  margin: 20px auto;
+
+  filter: var(--icon-filter);
+}
+
+.homeCTA {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  flex: 2;
+  width: 100%;
+}
+
+.homeButton {
+  width: 90%;
+  max-width: 300px;
+
+  margin: 0 auto;
+  padding: 20px;
+
+  border-radius: var(--radius-md);
+
+  background: var(--primary);
+  color: var(--primary-foreground);
+
+  text-align: center;
+  text-decoration: none;
+
+  transition: background-color var(--transition);
+}
+
+.homeButton:hover {
+  background: var(--primary-hover);
+}

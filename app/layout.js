@@ -1,4 +1,5 @@
 import "./styles.scss";
+import "./home.scss";
 import { ThemeProvider } from "./lib/themeProvider";
 
 export const metadata = {

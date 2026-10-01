@@ -30,14 +30,12 @@ function applyTheme(theme) {
 
 export function ThemeProvider({ children }) {
   const [theme, setThemeState] = useState("light");
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") || "light";
 
     setThemeState(savedTheme);
     applyTheme(savedTheme);
-    setMounted(true);
   }, []);
 
   function setTheme(nextTheme) {
@@ -51,14 +49,7 @@ export function ThemeProvider({ children }) {
   }
 
   return (
-    <ThemeContext.Provider
-      value={{
-        theme,
-        setTheme,
-        toggleTheme,
-        mounted,
-      }}
-    >
+    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );
