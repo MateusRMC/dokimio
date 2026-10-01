@@ -2,15 +2,11 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-
-  width: 60%;
+  width: 80%;
   max-width: 500px;
-
   margin: auto;
   overflow: hidden;
-
   text-align: center;
-
   color: var(--foreground);
 }
 
@@ -89,4 +85,11 @@
 
 .toggle:hover {
   color: var(--foreground);
+}
+
+@media screen and (orientation: landscape) {
+  .auth {
+    width: 40%;
+    max-width: 500px;
+  }
 }
