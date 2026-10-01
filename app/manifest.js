@@ -1,5 +1,6 @@
 export default function manifest() {
   return {
+    id: "/",
     name: "Dokimio",
     short_name: "Dokimio",
     description: "Write and nothing more",
