@@ -11,9 +11,10 @@ export function ThemeToggle() {
 
   return (
     <img
-      src={theme === "dark" ? "/lightmode.svg" : "darkmode.svg"}
+      src={theme === "dark" ? "/lightmode.svg" : "/darkmode.svg"}
       className="themeToggle"
       onClick={toggleTheme}
+      alt="Toggle theme"
     />
   );
 }
