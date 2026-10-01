@@ -5,8 +5,8 @@ import { createContext, useContext, useEffect, useState } from "react";
 const ThemeContext = createContext(null);
 
 const THEME_COLORS = {
-  light: "#ffffff",
-  dark: "#000000",
+  light: "#fcfcfb",
+  dark: "#121212",
 };
 
 function setBrowserThemeColor(theme) {
