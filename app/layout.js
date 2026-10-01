@@ -1,6 +1,5 @@
 import "./styles.scss";
 import { ThemeProvider } from "./lib/themeProvider";
-import { iosStartupImages } from "./ios-startup-image";
 
 export const metadata = {
   title: "Dokimio - Write and nothing more.",
@@ -16,7 +15,7 @@ export const metadata = {
     capable: true,
     title: "Dokimio",
     statusBarStyle: "default",
-    startupImage: iosStartupImages,
+    startupImage: "/icons/dokimio-logo.png",
   },
 
   other: {
