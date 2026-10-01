@@ -25,7 +25,7 @@ export default function HomePageClient() {
         }}
       >
         <img
-          src="/dokimio-logo.jpg"
+          src="/icons/dokimio-logo.png"
           style={{ width: "80%", maxWidth: "500px", margin: "20px auto" }}
         />
 

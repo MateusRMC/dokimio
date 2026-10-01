@@ -754,7 +754,7 @@ export default function NotesPageClient({ user }) {
         }}
       >
         <div className="header-sideBar">
-          <img className="app-logo" src="/simplenotes.jpg" alt="Simplenotes" />
+          <img className="app-logo" src="/icons/dokimio-logo.png" alt="Dokimio" />
 
           {sideBarToggle && (
             <img

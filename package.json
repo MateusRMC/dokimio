@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "generate:pwa-assets": "pwa-asset-generator public/simplenotes.svg public/splash --splash-only --type png --background '#ffffff' --padding 'calc(50vh - 25%) calc(50vw - 25%)' --xhtml"
+    "lint": "eslint"
   },
   "dependencies": {
     "@supabase/ssr": "^0.10.3",
@@ -23,7 +22,6 @@
   "devDependencies": {
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
-    "eslint-config-next": "16.2.1",
-    "pwa-asset-generator": "^8.1.4"
+    "eslint-config-next": "16.2.1"
   }
 }
