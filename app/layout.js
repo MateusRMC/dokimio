@@ -3,18 +3,18 @@ import { ThemeProvider } from "./lib/themeProvider";
 import { iosStartupImages } from "./ios-startup-image";
 
 export const metadata = {
-  title: "Simple Notes - Write and nothing more.",
+  title: "Dokimio - Write and nothing more.",
   description: "Write and nothing more.",
-  applicationName: "Simple Notes",
+  applicationName: "Dokimio",
 
   icons: {
-    icon: "/icons/favicon-196.png",
-    apple: "/icons/apple-icon-180.png",
+    icon: "/icons/d-logo.png",
+    apple: "/icons/d-logo.png",
   },
 
   appleWebApp: {
     capable: true,
-    title: "Simple Notes",
+    title: "Dokimio",
     statusBarStyle: "default",
     startupImage: iosStartupImages,
   },
@@ -22,7 +22,7 @@ export const metadata = {
   other: {
     "mobile-web-app-capable": "yes",
     "apple-mobile-web-app-capable": "yes",
-    "apple-mobile-web-app-title": "Simple Notes",
+    "apple-mobile-web-app-title": "Dokimio",
     "apple-mobile-web-app-status-bar-style": "default",
   },
 };
